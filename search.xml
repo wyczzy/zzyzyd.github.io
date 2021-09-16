@@ -5,6 +5,19 @@
     
     <entry>
       <title></title>
+      <link href="/project/2021/09/16/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/"/>
+      <url>/project/2021/09/16/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95%E6%95%B4%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="RCNN系列"><a href="#RCNN系列" class="headerlink" title="RCNN系列"></a>RCNN系列</h1><h2 id="RCNN算法"><a href="#RCNN算法" class="headerlink" title="RCNN算法"></a>RCNN算法</h2><p>由于是早期的算法，所以不做详细描述，讲述一下大概的思想和步骤</p><ul><li>首先用SS算法(select search算法)，在原图片上筛选出1000~2000个候选框，之后resize到227*227(这里也是个玄学)。SS算法不做介绍了，大体上是利用像素点间的距离之类的。这一步也是生成预测框的关键一步。</li><li>之后送入CNN网络提取特征，假设前面提取到了2000张图片，之后经过提取特征之后变为$2000<em>4096$的张量，与20个SVM的$4096</em>20$系数矩阵相乘得到2000*20的分类概率矩阵，对每一列即一个类别内做NMS（非极大值抑制算法），就是选择一个分数最高的框，所有和这个框IOU值超过某个阈值的全部拿掉。之后在选取没有处理过的分数最高的框同上处理，直到所有的框要么被拿掉，要么被选择过为基准了。</li><li>剩下的框进行回归框修正，和真实框的参数进行一个最小二乘的回归。</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
       <link href="/project/2021/07/12/1/"/>
       <url>/project/2021/07/12/1/</url>
       
